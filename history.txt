@@ -1,0 +1,55 @@
+ideas futuras
+	2017.02.05
+		- Poder introducir parábolas x = f(y) con -U
+		- Evaluar expresiones con -e (operaciones + funciones [media, ordenar, ...])
+		- Alineación de puntos -a (añadir tolerancia)
+		- Uso de números complejos (unit UComplex) y tipo TPunto
+		- build.sh que selecciona la carpeta de destino adecuada
+		- localización
+	2021.02.16
+		- ¿indicar parámetros como clave-valor? y opciones de forma agrupada
+		? pruebas con número peleón 1260700000900320097
+		- Farey algorithm - https://www.youtube.com/watch?v=7LKy3lrkTRA
+	2021.05.14
+		- algoritmo de Kaprekar - https://culturacientifica.com/2021/02/24/6-174-un-numero-seductor/
+	2025.08.23
+		- nuevas operaciones: ordenar, stats (salida con media, desviación, mediana, geomean, ...), 
+			- las operaciones deben existir por separado; stats las combina
+		- resolver ecuaciones de grado 3
+
+v0.0.6 (2025.08.27)
+	+ Eliminar uso de TCustomApplication
+	+ Simplificado el uso de parámetros de entrada
+	+ Añadido el modo consola
+	+ Parametrizar operaciones para hacer el código más versátil
+	+ Añadido el algoritmo de Collatz (3n+1)
+	+ Añadido el cálculo de números primos en un rango
+
+v0.0.5 (2017.01.24)
+	+ Calcular divisores con -d
+	+ Calcular factores primos con -f
+	+ Mostrar ayuda si se ejecuta sin parámetros
+	+ Manejar error al usar parámetros inválidos
+	+ Que los métodos GetInt y GetDouble incorporen el HasOption
+	+ Eliminadas opciones largas
+	+ Cambiar primos a -p, parábola a -u, vértice a -v
+	+ Ejecutable más óptimo
+
+v0.0.4 (2014.08.10)
+	+ Añadido build.sh
+	+ Añadido history.txt
+	+ Ya no requiere compilarse desde lazarus IDE.
+	+ Limpieza de cógido.
+
+v0.0.3 (2013.12.13)
+	+ Pequeñas optimizaciones.
+
+v0.0.2 (2011.12.31)
+	+ Mejora del código separando los cálculos de la entrada-salida.
+	+ Mejora del cógido contra algunos posibles errores.
+	+ Añadida la interpolación de parábola por tres puntos.
+	+ Añadida la comprobación de número primo.
+	+ Añadida la obtención de vértice de parábola.
+
+v0.0.1 (2011.12.30)
+	+ Gesta del programa con la resolución de ecuaciones de segundo grado
