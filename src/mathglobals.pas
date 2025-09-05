@@ -14,7 +14,6 @@ type
 		y: double;
 	end;
 
-procedure version();
 procedure showError(mensaje: string);
 function getInt(val: string): int64;
 function getDouble(val: string): double;
@@ -22,12 +21,6 @@ function getPoint(val: string): TPoint;
 function formatDouble(val: double): string;
 
 implementation
-
-// Mostrar versión del programa
-procedure version();
-begin
-	writeLn('maths v0.0.6 ', {$i %DATE%});
-end;
 
 procedure showError(mensaje: string);
 begin

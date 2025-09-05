@@ -33,15 +33,16 @@ type
 	private
 		data: TStringList;
 		operations: TMathOperationMap;
+		procedure performOperation(cmd: string);
 		procedure getParamsFromExe();
 		procedure getParamsFromConsole(cmdData: string);
-		procedure writeHelp();
 		procedure enterConsoleMode();
-		procedure performOperation(cmd: string);
+		procedure writeHelp();
+		procedure version();
 	public
-		procedure run();
 		constructor create();
 		destructor destroy(); override;
+		procedure run();
 	end;
 
 implementation
@@ -131,7 +132,7 @@ var
 	p: int64;
 	exitConsole: boolean;
 begin
-	writeLn('Entrando en modo consola. Esta opción es experimental y está en desarrollo.');
+	writeLn('Entrando en modo consola.');
 	writeLn();
 	history := TStringList.create();
 	
@@ -159,6 +160,7 @@ begin
 			'exit': exitConsole := true;
 			'help': writeHelp();
 			'version': version();
+			'console': writeLn('Ya estamos en el modo consola :)');
 			else performOperation(cmd);
 		end;
 	until exitConsole;
@@ -206,6 +208,11 @@ begin
 			writeLn(op.getDescription());
 		end;
 	end;
+end;
+
+procedure TMathsApp.version();
+begin
+	writeLn('maths v0.0.6 ', {$i %DATE%});
 end;
 
 end.
