@@ -16,6 +16,6 @@ var
 
 begin
 	app := TMathsApp.create();
-	app.run;
-	app.free;
+	app.run();
+	app.free();
 end.

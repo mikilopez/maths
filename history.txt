@@ -1,5 +1,5 @@
 v0.0.7 (???)
-	+ Respuesta adecuado al mandar al modo consola desde el modo consola. Ya no se considera una característica en desarrollo.
+	+ Respuesta adecuada al mandar al modo consola desde el modo consola. Ya no se considera una característica en desarrollo.
 
 v0.0.6 (2025.08.27)
 	+ Eliminar uso de TCustomApplication

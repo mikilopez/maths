@@ -63,6 +63,7 @@ end;
 
 destructor TMathsApp.destroy();
 begin
+	data.free();
 	operations.free();
 	inherited destroy();
 end;
