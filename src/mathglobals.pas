@@ -5,6 +5,12 @@ unit mathglobals;
 interface
 
 uses
+	{$IFDEF UNIX}
+		{$IFDEF UseCThreads}
+			cthreads,
+		{$ENDIF}
+		cmem,
+	{$ENDIF}
 	Classes,
 	SysUtils;
 
