@@ -1,4 +1,4 @@
-v0.0.7 (???)
+v0.0.7 (2025.10.28)
 	+ El modo consola ya no se considera una característica en desarrollo.
 	+ El modo consola no aparece en las opciones de ayuda de la consola.
 	+ Solucionados errores a la hora de escribir números decimales en la salida.
