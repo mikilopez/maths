@@ -11,6 +11,7 @@ uses
 		{$ENDIF}
 		cmem,
 	{$ENDIF}
+	Crt,
 	Classes,
 	SysUtils,
 	UComplex,
@@ -33,6 +34,7 @@ type
 	private
 		data: TStringList;
 		operations: TMathOperationMap;
+		consoleMode: boolean;
 		procedure performOperation(cmd: string);
 		procedure getParamsFromExe();
 		procedure getParamsFromConsole(cmdData: string);
@@ -50,6 +52,7 @@ implementation
 constructor TMathsApp.create();
 begin
 	inherited create();
+	consoleMode := false;
 	data := TStringList.create();
 	operations := TMathOperationMap.create();
 	operations.add('primo', TMOPrime.create());
@@ -98,7 +101,7 @@ begin
 	operations.tryGetData(cmd, op);
 	if op = nil then
 	begin
-		writeLn('Operación desconocida: ' + cmd);
+		showError('Operación desconocida: ' + cmd);
 	end
 	else
 	begin
@@ -136,6 +139,7 @@ begin
 	writeLn('Entrando en modo consola.');
 	writeLn();
 	history := TStringList.create();
+	consoleMode := true;
 	
 	exitConsole := false;
 	repeat
@@ -161,7 +165,6 @@ begin
 			'exit': exitConsole := true;
 			'help': writeHelp();
 			'version': version();
-			'console': writeLn('Ya estamos en el modo consola :)');
 			else performOperation(cmd);
 		end;
 	until exitConsole;
@@ -186,7 +189,10 @@ begin
 		writeLn('Posibles opciones:');
 		writeLn('help' + #13#10#9 + 'Muestra esta ayuda.');
 		writeLn('version'  + #13#10#9 +  'Indica la versión y fecha del programa.');
-		writeLn('console'  + #13#10#9 +  'Inicia la aplicación en modo consola.');
+		if not consoleMode then
+		begin
+			writeLn('console'  + #13#10#9 +  'Inicia la aplicación en modo consola.');
+		end;
 		writeLn();
 
 		for i := 0 to operations.count - 1 do
@@ -213,7 +219,7 @@ end;
 
 procedure TMathsApp.version();
 begin
-	writeLn('maths v0.0.6 ', {$i %DATE%});
+	writeLn('maths v0.0.7', {$i %DATE%});
 end;
 
 end.
