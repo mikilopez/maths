@@ -11,6 +11,7 @@ uses
 		{$ENDIF}
 		cmem,
 	{$ENDIF}
+	Crt,
 	Classes,
 	SysUtils,
 	UComplex,
@@ -33,15 +34,17 @@ type
 	private
 		data: TStringList;
 		operations: TMathOperationMap;
+		consoleMode: boolean;
+		procedure performOperation(cmd: string);
 		procedure getParamsFromExe();
 		procedure getParamsFromConsole(cmdData: string);
-		procedure writeHelp();
 		procedure enterConsoleMode();
-		procedure performOperation(cmd: string);
+		procedure writeHelp();
+		procedure version();
 	public
-		procedure run();
 		constructor create();
 		destructor destroy(); override;
+		procedure run();
 	end;
 
 implementation
@@ -49,6 +52,7 @@ implementation
 constructor TMathsApp.create();
 begin
 	inherited create();
+	consoleMode := false;
 	data := TStringList.create();
 	operations := TMathOperationMap.create();
 	operations.add('primo', TMOPrime.create());
@@ -62,6 +66,7 @@ end;
 
 destructor TMathsApp.destroy();
 begin
+	data.free();
 	operations.free();
 	inherited destroy();
 end;
@@ -96,7 +101,7 @@ begin
 	operations.tryGetData(cmd, op);
 	if op = nil then
 	begin
-		writeLn('Operación desconocida: ' + cmd);
+		showError('Operación desconocida: ' + cmd);
 	end
 	else
 	begin
@@ -131,9 +136,10 @@ var
 	p: int64;
 	exitConsole: boolean;
 begin
-	writeLn('Entrando en modo consola. Esta opción es experimental y está en desarrollo.');
+	writeLn('Entrando en modo consola.');
 	writeLn();
 	history := TStringList.create();
+	consoleMode := true;
 	
 	exitConsole := false;
 	repeat
@@ -183,7 +189,10 @@ begin
 		writeLn('Posibles opciones:');
 		writeLn('help' + #13#10#9 + 'Muestra esta ayuda.');
 		writeLn('version'  + #13#10#9 +  'Indica la versión y fecha del programa.');
-		writeLn('console'  + #13#10#9 +  'Inicia la aplicación en modo consola.');
+		if not consoleMode then
+		begin
+			writeLn('console'  + #13#10#9 +  'Inicia la aplicación en modo consola.');
+		end;
 		writeLn();
 
 		for i := 0 to operations.count - 1 do
@@ -206,6 +215,11 @@ begin
 			writeLn(op.getDescription());
 		end;
 	end;
+end;
+
+procedure TMathsApp.version();
+begin
+	writeLn('maths v0.0.7', {$i %DATE%});
 end;
 
 end.

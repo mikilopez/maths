@@ -5,6 +5,13 @@ unit mathglobals;
 interface
 
 uses
+	{$IFDEF UNIX}
+		{$IFDEF UseCThreads}
+			cthreads,
+		{$ENDIF}
+		cmem,
+	{$ENDIF}
+	Crt,
 	Classes,
 	SysUtils;
 
@@ -14,25 +21,22 @@ type
 		y: double;
 	end;
 
-procedure version();
 procedure showError(mensaje: string);
 function getInt(val: string): int64;
 function getDouble(val: string): double;
 function getPoint(val: string): TPoint;
-function formatDouble(val: double): string;
+function formatReal(val: double): string;
+function formatImaginary(val: double): string;
 
 implementation
 
-// Mostrar versión del programa
-procedure version();
-begin
-	writeLn('maths v0.0.6 ', {$i %DATE%});
-end;
-
 procedure showError(mensaje: string);
 begin
-	writeLn('ERROR: ', mensaje);
-	//halt;
+	textColor(red);
+	write('ERROR: ');
+	textColor(white);
+	writeLn(mensaje);
+	normVideo();
 end;
 
 function getInt(val: string): int64;
@@ -75,10 +79,14 @@ begin
 	end;
 end;
 
-// TODO renombrar función, se usa solo para la parte imaginaria de números complejos
-function formatDouble(val: double): string;
+function formatReal(val: double): string;
 begin
-	result := formatFloat(' + 0.###############i; - 0.###############i;', val);
+	result := formatFloat(' + 0.###############; - 0.###############; ', val);
+end;
+
+function formatImaginary(val: double): string;
+begin
+	result := formatFloat(' + 0.###############i; - 0.###############i; ', val);
 end;
 
 end.

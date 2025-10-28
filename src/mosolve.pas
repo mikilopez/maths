@@ -73,11 +73,11 @@ begin
 
 	// Imprimir solución por pantalla
 	write(floatToStr(x1r));
-	writeLn(formatDouble(x1i));
+	writeLn(formatImaginary(x1i));
 	if not unica then
 	begin
 		write(floatToStr(x2r));
-		writeLn(formatDouble(x2i));
+		writeLn(formatImaginary(x2i));
 	end;
 end;
 

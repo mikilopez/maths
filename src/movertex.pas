@@ -65,7 +65,7 @@ begin
 	end;
 
 	x := -b/(2*a);
-	y := a*x*x + b*x+c;
+	y := a*x*x + b*x + c;
 	p.x := x;
 	p.y := y;
 	result := p;

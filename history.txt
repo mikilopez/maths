@@ -1,3 +1,9 @@
+v0.0.7 (2025.10.28)
+	+ El modo consola ya no se considera una característica en desarrollo.
+	+ El modo consola no aparece en las opciones de ayuda de la consola.
+	+ Solucionados errores a la hora de escribir números decimales en la salida.
+	+ Añadido color a los mensajes de error.
+
 v0.0.6 (2025.08.27)
 	+ Eliminar uso de TCustomApplication
 	+ Simplificado el uso de parámetros de entrada

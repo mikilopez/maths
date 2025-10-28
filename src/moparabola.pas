@@ -42,7 +42,7 @@ end;
 
 procedure TMOParabola.perform(input: TStrings);
 var
-	x, y, a, b, c, den: double;
+	a, b, c, den: double;
 	p1, p2, p3: TPoint;
     vertice: boolean;
     opVertex: TMOVertex;
@@ -81,8 +81,8 @@ begin
 
 	writeLn('Parábola resultante: y = ',
 			floatToStr(a), 'x²',
-			formatDouble(b), 'x',
-			formatDouble(c));
+			formatReal(b), 'x',
+			formatReal(c));
 	
 	// Cálculo del vértice
 	if vertice then
